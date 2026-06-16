@@ -19,9 +19,7 @@ export const createAnnouncementValidator = celebrate({
     title: Joi.string().min(5).max(100).required(),
     description: Joi.string().min(10).required(),
     price: Joi.number().positive().required(),
-    category: Joi.string()
-      .validate("sale", "service", "job", "other")
-      .required(),
+    category: Joi.string().valid("sale", "service", "job", "other").required(),
     contactInfo: Joi.string().min(5).required(),
   }),
 });
@@ -34,9 +32,7 @@ export const updateAnnouncementValidator = celebrate({
     title: Joi.string().min(5).max(100).optional(),
     description: Joi.string().min(10).optional(),
     price: Joi.number().positive().optional(),
-    category: Joi.string()
-      .validate("sale", "service", "job", "other")
-      .optional(),
+    category: Joi.string().valid("sale", "service", "job", "other").optional(),
     contactInfo: Joi.string().min(5).optional(),
   }).min(1),
 });

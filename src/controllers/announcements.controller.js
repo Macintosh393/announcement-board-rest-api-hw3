@@ -3,9 +3,9 @@ import prisma from "../../prisma/client.js";
 export const getAllAnnouncements = async (req, res) => {
   const { search, sort = "newest", page = 1 } = req.query;
 
-  where = {};
+  const where = {};
 
-  if (search.trim()) {
+  if (search && search.trim()) {
     where.title = {
       contains: search.trim(),
     };
