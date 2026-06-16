@@ -1,0 +1,62 @@
+### GET /announcements без параметрів
+GET <http://localhost:3000/announcements>
+
+### GET /announcements з параметром search
+GET <http://localhost:3000/announcements?search=smartphone>
+
+### GET /announcements з параметрами sort та page
+GET <http://localhost:3000/announcements?sort=oldest&page=2>
+
+### GET /announcements/:id з id який існує
+GET <http://localhost:3000/announcements/1>
+
+### GET /announcements/:id з ID якого не існує в базі даних
+GET <http://localhost:3000/announcements/999>
+
+### POST /announcements з валідними даними
+POST <http://localhost:3000/announcements>
+Content-Type: application/json
+
+{
+    "title": "New Smartphone",
+    "description": "Absolutely brand new smartphone",
+    "price": 10000,
+    "category": "sale",
+    "contactInfo": "+380 97 123 1234"
+}
+
+### POST /announcements з невалідними даними, щоб показати роботу валідації
+POST <http://localhost:3000/announcements>
+Content-Type: application/json
+
+{
+    "title": "New",
+    "description": "brand new",
+    "price": -5,
+    "category": "selling",
+    "contactInfo": "052"
+}
+
+### PATCH /announcements/:id з частковими даними
+PATCH <http://localhost:3000/announcements/1>
+Content-Type: application/json
+
+{
+    "title": "iPhone 32",
+    "price": 100000
+}
+
+### PATCH /announcements/:id з ID якого не існує в базі даних
+PATCH <http://localhost:3000/announcements/999>
+Content-Type: application/json
+
+{
+    "title": "iPhone 32",
+    "price": 100000
+}
+
+### DELETE /announcements/:id
+DELETE <http://localhost:3000/announcements/1>
+
+### DELETE /announcements/:id з ID якого не існує в базі даних
+DELETE <http://localhost:3000/announcements/999>
